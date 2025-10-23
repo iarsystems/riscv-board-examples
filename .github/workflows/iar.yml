@@ -27,7 +27,11 @@ jobs:
         - rgb-led
         - spi-flash
         - switches
-        - switiches-interrupt
+        - switches-interrupt
+        - temperature-humidity
+        - timer-pwm
+        - toggle-io
+        - usart
     steps:
     - name: Invoke the IAR C/C++ Compiler for RISC-V
       run: iccriscv --version
