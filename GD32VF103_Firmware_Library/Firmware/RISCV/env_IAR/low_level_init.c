@@ -1,4 +1,8 @@
+#if __BUILD_NUMBER__ >= 5519
+#include "GD/ioGD32VF103.h"
+#else
 #include "GigaDevice/ioGD32VF103.h"
+#endif
 #include "intrinsics.h"
 #include "csr.h"
 #include "stdlib.h"
