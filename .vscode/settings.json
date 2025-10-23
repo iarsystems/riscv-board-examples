@@ -1,0 +1,62 @@
+{
+    // These settings will ensure that the CMake Tools extension
+    // will launch the IAR C-SPY Debugger instead of trying to launch
+    // the executable on the host
+    "cmake.buildBeforeRun": true,
+    "cmake.configureOnOpen": false,
+    "cmake.useCMakePresets": "always",
+    "cmake.enabledOutputParsers": [
+        "cmake",
+        "iar"
+    ],
+    "cmake.defaultVariants": { "buildType": "Debug" },
+    "cmake.options.statusBarVisibility": "visible",
+    "cmake.options.advanced": {
+        "folder": {
+            "projectStatusVisibility": "visible"
+        },
+        "configure": {
+            "projectStatusVisibility": "visible",
+            "statusBarVisibility": "visible"
+        },
+        "build": {
+            "projectStatusVisibility": "visible",
+            "statusBarVisibility": "visible"
+        },
+        "buildTarget": {
+            "statusBarVisibility": "hidden"
+        },
+        "testPreset": {
+            "statusBarVisibility": "hidden"
+        },
+        "ctest": {
+            "projectStatusVisibility": "visible",
+            "statusBarVisibility": "visible"
+        },
+        "debug": {
+            "projectStatusVisibility": "hidden",
+            "statusBarVisibility": "hidden"
+        },
+        "launch": {
+            "projectStatusVisibility": "hidden",
+            "statusBarVisibility": "hidden"
+        },
+        "cpack": {
+            "projectStatusVisibility": "hidden",
+            "statusBarVisibility": "hidden"
+        },
+        "workflow": {
+            "projectStatusVisibility": "hidden",
+            "statusBarVisibility": "hidden"
+        },
+        "launchTarget": {
+            "statusBarVisibility": "hidden"
+        },
+        "packagePreset": {
+            "statusBarVisibility": "hidden"
+        },
+        "workflowPreset": {
+            "statusBarVisibility": "hidden"
+        }        
+    }
+}

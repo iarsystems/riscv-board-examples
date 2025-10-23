@@ -1,0 +1,75 @@
+{
+    // .vscode/launch.json example for IAR Build Tools (Linux)
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "IAR Debug (Simulator)",
+            "type": "cspy",
+            "request": "launch",
+            "target": "riscv",
+            "program": "${command:cmake.launchTargetPath}",
+            "stopOnSymbol": "main",
+            "workbenchPath": "/opt/iar/cxriscv",
+            "projectPath": "${workspaceRoot}",
+            "driver": "Simulator",
+            "driverOptions": [
+                "--core=RV32IMAC",
+                "-p",
+                "/opt/iar/cxriscv/riscv/config/debugger/GD/GD32VF103xB.ddf",
+                "--multicore_nr_of_cores=1"
+            ]
+        },
+        {
+            "name": "IAR Debug (Linux/I-Jet/SWD)",
+            "type": "cspy",
+            "request": "launch",
+            "target": "riscv",
+            "program": "${command:cmake.launchTargetPath}",
+            "stopOnSymbol": "main",
+            "projectPath": "${workspaceRoot}",
+            "workbenchPath": "/opt/iar/cxriscv",
+            "driver": "I-jet",
+            "driverOptions": [
+                "--core=RV32IMAC",
+                "-p",
+                "/opt/iar/cxriscv/riscv/config/debugger/GD/GD32VF103xB.ddf",
+                "--multicore_nr_of_cores=1",
+                "--jet_board_cfg=/opt/iar/cxriscv/riscv/config/debugger/GD/GD32VF103x.ProbeConfig",
+                "--jet_board_did=RISCV",
+                "--jet_standard_reset=2,300,200",
+                "--jet_power_from_probe=switch_off",
+                "--drv_catch_exceptions=0x70000001",
+                "--drv_system_bus_access"
+            ],
+            "download": {
+                "flashLoader": "/opt/iar/cxriscv/riscv/config/flashloader/GD/FlashGD32VF103xB.board",
+                "deviceMacros": [
+                ]
+            }
+        }
+        // {
+        //     "name": "IAR Debug (Linux/J-Link)",
+        //     "type": "cspy",
+        //     "request": "launch",
+        //     "target": "riscv",
+        //     "program": "${command:cmake.launchTargetPath}",
+        //     "stopOnSymbol": "main",
+        //     "projectPath": "${workspaceRoot}",
+        //     "workbenchPath": "/opt/iar/cxriscv",
+        //     "driver": "J-Link/J-Trace",
+        //     "driverOptions": [
+        //         "--core=RV32IMAC",
+        //         "-p",
+        //         "/opt/iar/cxriscv/riscv/config/debugger/GD/GD32VF103xB.ddf",
+        //         "--multicore_nr_of_cores=1",
+        //         "--drv_communication=USB0",
+        //         "--drv_interface_speed=auto",
+        //         "--jlink_initial_speed=1000",
+        //         "--jlink_reset_strategy=0,0",
+        //         "--drv_interface=SWD",
+        //         "--drv_catch_exceptions=0x000",
+        //         "--drv_swo_clock_setup=168000000,0,2000000"
+        //     ]
+        // }
+    ]
+}

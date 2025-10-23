@@ -1,0 +1,35 @@
+{
+  "image": "ghcr.io/iarsystems/riscv",
+
+  // Set the Container's environment variables
+  "containerEnv": {
+    "HOME": "/home/ubuntu",
+    "IAR_LMS_BEARER_TOKEN": "${localEnv:IAR_LMS_BEARER_TOKEN}"
+  },
+  // Customizations installs the IAR Extensions for VS Code
+  // More information: https://iar.com/vscode
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "iarsystems.iar-debug",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode-remote.vscode-remote-extensionpack",
+        "github.vscode-github-actions"
+      ]
+    }
+  },
+  // The License Management System is updated
+  //  for the Dev Container at build-time.
+  "features": {
+    "./lmsc": {},
+    "./jlink": {}
+  },
+  // Comment "remoteUser" and rebuild the container to become `root`.
+  // More information: https://containers.dev/implementors/json_reference/#remoteUser
+  "remoteUser": "ubuntu",
+  // Exposes the host's USB bus to the dev container.
+  "runArgs": [
+    "--device=/dev/bus/usb",
+    "--privileged"
+  ]
+}

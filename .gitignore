@@ -1,6 +1,6 @@
-**/Debug
-**/Release
-**/settings
-**/*.ewt
-**/*.dep
-**/.vscode/
+build/
+settings/
+CMakeUserPresets.json
+.vscode/*.db
+.vscode/*.db-*
+.vscode/iar-vsc.json

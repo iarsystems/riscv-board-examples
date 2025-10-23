@@ -1,6 +1,6 @@
 # MIT License
 
-Copyright (c) 2020 IAR Systems AB
+Copyright (c) 2020-2025 IAR Systems AB
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,8 +24,9 @@ SOFTWARE.
 
 | Component                       | License              | Copyright                     |
 |:---------                       |:-------              |:---------                     |
-| BSP for the IAR RISC-V GD32V    | MIT                  | IAR Systems AB                |
-| Coremark example                | Apache 2.0           | EEMBC                         |
+| IAR RISC-V Eval Board BSP       | MIT                  | IAR Systems AB                |
 | Example projects                | MIT                  | IAR Systems AB                |
+| Coremark example                | Apache 2.0           | EEMBC                         |
 | GD32VF103 Firmware Library      | BSD-3-Clause         | GigaDevice Semiconductor Inc. |
 | SHT3x Sensor driver             | BSD-3-Clause         | Sensirion AG                  |
+

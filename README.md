@@ -1,28 +1,54 @@
-# Project examples for the<br> IAR RISC-V GD32V Evaluation kit
+# Project examples for the IAR RISC-V Evaluation Board
 
-The [examples projects](Examples) in this repository are designed for the __IAR RISC-V GD32V Evaluation board__  with the [IAR Embedded Workbench for RISC-V][ewriscv-url].
+This repository contains [application examples](examples) for the __IAR RISC-V Evaluation Board__.
 
-- Start with the [__Getting Started__ guide](docs/getting-started.md).
+### Board specifications
+The IAR RISC-V Evaluation Board is a prototyping board featuring a number of peripherals as described in the list below.
 
-- For related documentation and schematics, follow this [link](docs).
+<img align="right" src="docs/images/00-board.png" width=320px />
 
-## Contributing
-For learning how you can contribute with new projects to this repository, follow this [link](contributions).
+* [GD32VF103RBT6](https://www.gigadevice.com/product/mcu/main-stream-mcus/gd32vf103-series) GigaDevice RISC-V MCU
+* MIPI-20 JTAG header (__J11__)
+* [SPI flash](examples/spi-flash) memory
+* 5x User [LEDs](examples/leds)
+* 5x User [switches](examples/switches)
+* [RGB LED](examples/rgb-led)
+* [Potentiometer](examples/potentiometer)
+* I²C 3-axis [accelerometer](examples/accelerometer)
+* I²C [temperature-humidity](examples/temperature-humidity) sensors
+* Light sensor
+* Microphone
+* 3.5mm Earbud jack
+* Reset button 
 
-## Additional resources
-Follow this [link](docs/safertos.md), if you want learn more about [SAFE**RTOS**®](docs/safertos.md) on the IAR RISC-V GD32V board.
+The board [schematics](docs/iar-risc-v-gd32v-evaluation-board-schematics-rev3c.pdf) is readily available.
 
-## Issues
-For technical support contact [IAR Customer Support][url-iar-customer-support].
+## Disclaimer
+IAR shall not be held liable for any losses or problems arising from using the content provided in this repository. The software provided in this repository is released under the licenses detailed in [LICENSE.md](LICENSE.md).
 
-For questions or suggestions related to this tutorial: try the [wiki][url-repo-wiki] or check [earlier issues][url-repo-issue-old]. If those don't help, create a [new issue][url-repo-issue-new] with detailed information.
+## Supported Environments
+The project format for the [application examples](Examples) in this repository is [CMake](https://github.com/iarsystems/cmake-tutorial). The following Development Environments are readily supported:
+- [IAR Embedded Workbench for RISC-V](https://www.iar.com/embedded-development-tools/free-trials) IDE
+- Microsoft Visual Studio Code with the [IAR Build Tools for RISC-V](https://iar.com/cx) and the [IAR Debug Extension](https://marketplace.visualstudio.com/items?itemName=iarsystems.iar-debug)
 
+## Getting started
+It is highly recommended you follow these guidelines.
+
+1. Clone or download this repository to your local machine.
+2. Open the CMake project (the top-level CMakeList.txt) in your preferred IDE.
+3. Build the CMake project. All application examples will build.
+4. Connect the board's MIPI-20  to a supported debug probe (IAR I-jet or SEGGER J-link) attached to an USB port of your local machine.
+5. Debug any desired application example.
+
+>[!TIP]
+>Refer to the desired application example README.md for its specific notes and details.
+
+## Troubleshooting
+For questions or suggestions related to this repository: try the [wiki][url-repo-wiki] or check [earlier issues][url-repo-issue-old]. If those don't help, create a [new issue][url-repo-issue-new] with detailed information.
 
 <!-- links -->
-[url-iar-customer-support]: https://iar.my.site.com/mypages/s/contactsupport
-
-[ewriscv-url]:         https://iar.com/riscv
-[url-repo]:            https://github.com/iarsystems/iar-risc-v-gd32v-eval
-[url-repo-issue-wiki]: https://github.com/iarsystems/iar-risc-v-gd32v-eval/wiki
-[url-repo-issue-new]:  https://github.com/iarsystems/iar-risc-v-gd32v-eval/issues/new
-[url-repo-issue-old]:  https://github.com/iarsystems/iar-risc-v-gd32v-eval/issues?q=is%3Aissue+is%3Aopen%7Cclosed
+[ewriscv-url]:              https://iar.com/riscv
+[url-repo]:                 https://github.com/iarsystems/riscv-board-examples
+[url-repo-wiki]:            https://github.com/iarsystems/riscv-board-examples/wiki
+[url-repo-issue-new]:       https://github.com/iarsystems/riscv-board-examples/issues/new
+[url-repo-issue-old]:       https://github.com/iarsystems/riscv-board-examples/issues?q=is%3Aissue+is%3Aopen%7Cclosed
