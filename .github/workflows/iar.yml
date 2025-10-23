@@ -1,0 +1,39 @@
+name: IAR CI
+
+on:
+  workflow_dispatch:
+  push:
+    paths-ignore:
+    - 'README.md'
+    - '.devcontainer/**'
+    - '.vscode/**'
+
+env:
+  IAR_LMS_BEARER_TOKEN: ${{ secrets.IAR_LMS_BEARER_TOKEN }}
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-24.04
+    container:
+      image: ghcr.io/iarsystems/riscv
+    strategy:
+      matrix:
+        example:
+        - accelerometer
+        - coremark
+        - leds
+        - potentiometer
+        - rgb-led
+        - spi-flash
+        - switches
+        - switiches-interrupt
+    steps:
+    - name: Invoke the IAR C/C++ Compiler for RISC-V
+      run: iccriscv --version
+    - name: Checkout project
+      uses: actions/checkout@v4
+      with:
+        submodules: true
+    - run: iarbuild Examples/${{ matrix.example }}/${{ matrix.example }}.ewp -build "Debug" -log all -parallel 4
+
