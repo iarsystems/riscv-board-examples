@@ -1,10 +1,11 @@
 /*
   Copyright (c) 2025 IAR Systems AB.
-  See LICENSE for detailed license information.
+  See LICENSE.md for detailed license information.
 */
 
 pipeline {
   docker {
+    // See: https://github.com/orgs/iarsystems/packages for more information.
     image 'ghcr.io/iarsystems/riscv'
     args '-e HOME=${WORKSPACE} -e IAR_LMS_BEARER_TOKEN=${IAR_LMS_BEARER_TOKEN}'
   }
@@ -56,7 +57,7 @@ pipeline {
             sh ''
           }
         }
-      }
-    }
-  }
-}
+      } /* parallel{} */
+    } /* stage{} */
+  } /* stages{} */
+} /* pipeline{} */
