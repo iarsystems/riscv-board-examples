@@ -1,0 +1,62 @@
+/*
+  Copyright (c) 2025 IAR Systems AB.
+  See LICENSE for detailed license information.
+*/
+
+pipeline {
+  docker {
+    image 'ghcr.io/iarsystems/riscv'
+    args '-e HOME=${WORKSPACE} -e IAR_LMS_BEARER_TOKEN=${IAR_LMS_BEARER_TOKEN}'
+  }
+  environment {
+    CAPACITY = '2'
+  }
+  stages {
+    stage('Test compiler') {
+      steps {
+        echo 'This stage tries to compile a simple input. When it fails, it is likely there is an issue with the compiler license activation.'
+        sh 'iccriscv --version'
+        sh 'echo "main(){}" | iccriscv -'
+      }
+    }
+    stage('Build') {
+      parallel {
+        stage('accelerometer') {
+          steps {
+            sh ''
+          }
+        }
+        stage('coremark') {
+          steps {
+            sh ''
+          }
+        }
+        stage('leds') {
+          steps {
+            sh ''
+          }
+        }
+        stage('leds-cpp') {
+          steps {
+            sh ''
+          }
+        }
+        stage('potentiometer') {
+          steps {
+            sh ''
+          }
+        }
+        stage('rgb-led') {
+          steps {
+            sh ''
+          }
+        }
+        stage('spi-flash') {
+          steps {
+            sh ''
+          }
+        }
+      }
+    }
+  }
+}
