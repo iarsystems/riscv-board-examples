@@ -4,10 +4,12 @@
 */
 
 pipeline {
-  docker {
-    // See: https://github.com/orgs/iarsystems/packages for more information.
-    image 'ghcr.io/iarsystems/riscv'
-    args '-e HOME=${WORKSPACE} -e IAR_LMS_BEARER_TOKEN=${IAR_LMS_BEARER_TOKEN}'
+  agent {
+    docker {
+      // See: https://github.com/orgs/iarsystems/packages for more information.
+      image 'ghcr.io/iarsystems/riscv'
+      args '-e HOME=${WORKSPACE} -e IAR_LMS_BEARER_TOKEN=${IAR_LMS_BEARER_TOKEN}'
+    }
   }
   environment {
     CAPACITY = '2'
