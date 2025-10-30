@@ -17,49 +17,82 @@ pipeline {
   stages {
     stage('Test compiler') {
       steps {
-        echo 'This stage tries to compile a simple input. When it fails, it is likely there is an issue with the compiler license activation.'
         sh 'iccriscv --version'
-        sh 'echo "main(){}" | iccriscv -'
+      }
+    }
+    stage('Configure') {
+      steps {
+        sh 'cmake --preset cxriscv'        
       }
     }
     stage('Build') {
       parallel {
         stage('accelerometer') {
           steps {
-            sh ''
+            sh 'cmake --build --preset release --target accelerometer'
           }
         }
         stage('coremark') {
           steps {
-            sh ''
+            sh 'cmake --build --preset release --target coremark'
           }
         }
         stage('leds') {
           steps {
-            sh ''
+            sh 'cmake --build --preset release --target leds'
           }
         }
         stage('leds-cpp') {
           steps {
-            sh ''
+            sh 'cmake --build --preset release --target leds-cpp'
           }
         }
         stage('potentiometer') {
           steps {
-            sh ''
+            sh 'cmake --build --preset release --target potentiometer'
           }
         }
         stage('rgb-led') {
           steps {
-            sh ''
+            sh 'cmake --build --preset release --target rgb-led'
           }
         }
         stage('spi-flash') {
           steps {
-            sh ''
+            sh 'cmake --build --preset release --target spi-flash'
+          }
+        }
+        stage('switches') {
+          steps {
+            sh 'cmake --build --preset release --target switches'
+          }
+        }
+        stage('switches-interrupt') {
+          steps {
+            sh 'cmake --build --preset release --target switches-interrupt'
+          }
+        }
+        stage('temperature-humidity') {
+          steps {
+            sh 'cmake --build --preset release --target temperature-humidity'
+          }
+        }
+        stage('timer-pwm') {
+          steps {
+            sh 'cmake --build --preset release --target timer-pwm'
+          }
+        }
+        stage('toggle-io') {
+          steps {
+            sh 'cmake --build --preset release --target toggle-io'
+          }
+        }
+        stage('usart') {
+          steps {
+            sh 'cmake --build --preset release --target usart'
           }
         }
       } /* parallel{} */
-    } /* stage{} */
+    } /* Build */
   } /* stages{} */
 } /* pipeline{} */
