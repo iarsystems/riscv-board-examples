@@ -3,15 +3,22 @@
 * Target: IAR RISC-V GD32V Evaluation Board
 
 ## Serial Port settings
-For the __SPI Flash__ example, configure the Serial Port in the Virtual Terminal with the following settings:
+Open a __Serial Terminal Emulator__ and configure the COM port with the following settings:
 
-| __Setting__    |  __Selection__  |
-| :------------- | :-------------- |
-| Baud rate      | 115200          |
-| Data           | 8               |
-| Bit Parity     | None            |
-| Stop bit       | 1               | 
-| Flow Control   | None            | 
+| __Baud rate__ | __Data__ | __Bit Parity__ | __Stop Bit__ | __Flow Control__ |
+|--------------:|---------:|---------------:|-------------:|-----------------:|
+|      `115200` |      `8` |         `None` |          `1` |           `None` |
+
+> __Note__
+>
+> This project example was tested with the following __Serial Virtual Terminal Emulators__
+> * [PuTTY][putty-url]
+> * [Tera Term][tera-term-url]
+> * [Termite][termite-url] 
+
+[putty-url]: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html 
+[tera-term-url]: https://ttssh2.osdn.jp/index.html.en
+[termite-url]: https://www.compuphase.com/software_termite.htm
 
 ## Running
 The program will fill and copy `txbuffer` contents to the SPI Flash memory. Then it will read the contents back, storing it the results on `rxbuffer`. Those contents are going to be printed to the Serial Terminal by using the retargeted `printf()` function. A final message should tell if the operation was succesful. The expected print out can be seen below.

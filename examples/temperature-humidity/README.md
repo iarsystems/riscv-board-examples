@@ -30,7 +30,14 @@ The settings are __highlighted__ in the following tables:
 |                | 5-6             | LED4           |
 
 ## Notes
-Depending on the room temperature/humidity conditions, you might have to adjust the fixed point _threshold values_ be able to cross over the different _threshold levels_. You will find that _threshold values_ in the _main.c_ file are expressed by a __1000x__ factor. For example, 25°C should be expressed as `25000`. If that is the case you are facing, update these _threshold values_, rebuild the project and restart the debugging session. The tables below summarize how the _threshold levels_ changes which LED will be lit.
+Depending on the room temperature and humidity, you may need to adjust the fixed-point threshold values in `main.c` to ensure proper crossing over all threshold levels. These values are scaled by a factor of 1000 (e.g., 25'C is represented as 25000).
+
+If adjustments are required for the current room conditions:
+- Update the temperature and humidity thresholds in `main.c`.
+- Rebuild the project.
+- Restart the debugging session.
+
+The tables below show how threshold levels determine which LED is lit.
 
 | __Temperature threshold__ |  __Set when data is__                                          | __Board LED__  |
 | :--------------           | :-------------                                                 | :-------       |

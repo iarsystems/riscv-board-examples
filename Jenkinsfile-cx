@@ -1,0 +1,98 @@
+/*
+  Copyright (c) 2025 IAR Systems AB.
+  See LICENSE.md for detailed license information.
+*/
+
+pipeline {
+  agent {
+    docker {
+      // See: https://github.com/orgs/iarsystems/packages for more information.
+      image 'ghcr.io/iarsystems/riscv'
+      args '-e HOME=${WORKSPACE} -e IAR_LMS_BEARER_TOKEN=${IAR_LMS_BEARER_TOKEN}'
+    }
+  }
+  environment {
+    CAPACITY = '2'
+  }
+  stages {
+    stage('Test compiler') {
+      steps {
+        sh 'iccriscv --version'
+      }
+    }
+    stage('Configure') {
+      steps {
+        sh 'cmake --preset cxriscv'        
+      }
+    }
+    stage('Build') {
+      parallel {
+        stage('accelerometer') {
+          steps {
+            sh 'cmake --build --preset release --target accelerometer'
+          }
+        }
+        stage('coremark') {
+          steps {
+            sh 'cmake --build --preset release --target coremark'
+          }
+        }
+        stage('leds') {
+          steps {
+            sh 'cmake --build --preset release --target leds'
+          }
+        }
+        stage('leds-cpp') {
+          steps {
+            sh 'cmake --build --preset release --target leds-cpp'
+          }
+        }
+        stage('potentiometer') {
+          steps {
+            sh 'cmake --build --preset release --target potentiometer'
+          }
+        }
+        stage('rgb-led') {
+          steps {
+            sh 'cmake --build --preset release --target rgb-led'
+          }
+        }
+        stage('spi-flash') {
+          steps {
+            sh 'cmake --build --preset release --target spi-flash'
+          }
+        }
+        stage('switches') {
+          steps {
+            sh 'cmake --build --preset release --target switches'
+          }
+        }
+        stage('switches-interrupt') {
+          steps {
+            sh 'cmake --build --preset release --target switches-interrupt'
+          }
+        }
+        stage('temperature-humidity') {
+          steps {
+            sh 'cmake --build --preset release --target temperature-humidity'
+          }
+        }
+        stage('timer-pwm') {
+          steps {
+            sh 'cmake --build --preset release --target timer-pwm'
+          }
+        }
+        stage('toggle-io') {
+          steps {
+            sh 'cmake --build --preset release --target toggle-io'
+          }
+        }
+        stage('usart') {
+          steps {
+            sh 'cmake --build --preset release --target usart'
+          }
+        }
+      } /* parallel{} */
+    } /* Build */
+  } /* stages{} */
+} /* pipeline{} */

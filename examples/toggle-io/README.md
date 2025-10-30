@@ -2,5 +2,5 @@
 
 * Target: IAR RISC-V GD32V Evaluation Board
 
-This project is an example which toggles an LED available connected to a GPIO pin. 
+This example toggles LED1 on the board.
   
