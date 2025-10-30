@@ -2,15 +2,6 @@
 
 * Target: IAR RISC-V GD32V Evaluation Board
 
-## Jumper settings
-1. Connect __J11__ to the I-jet Lite probe.
-2. Connect the I-jet Lite probe to one PC USB port.
-3. Connect __J7__ to another PC USB port.
-
-* For more information regarding the I-jet probe, refer to the [IAR Debug Probes User Guide][ijet-guide-url].
-
-[ijet-guide-url]: https://netstorage.iar.com/SuppDB/Public/UPDINFO/014617/riscv/doc/EWRISCV_DebugProbes.pdf 
-
 ## Serial Port settings
 Open a __Serial Terminal Emulator__ and configure the COM port with the following settings:
 
@@ -30,7 +21,7 @@ Open a __Serial Terminal Emulator__ and configure the COM port with the followin
 [termite-url]: https://www.compuphase.com/software_termite.htm
 
 ## Running
-The __Serial Terminal Emulator__ should display a welcome message with an output similar to the following:
+The serial USART example is a mini word game where the serial terminal emulator should display a welcome message followed by a request to type a randomly selected `<fruit>`:
 ```
 ---
 USART example
@@ -39,10 +30,7 @@ Type: <fruit>
 █
 ```
 
-> __Note__
-> * The `<fruit>` is randomly selected from a word list.
-
-When a character is sent to the serial port, a __dot__ will show on the __Serial Terminal Emulator__. For example:
+Each character typed into the serial terminal, will echo as a __dot__ for feedback. For example:
 ```
 ---
 USART example
@@ -51,7 +39,18 @@ Type: kiwi
 .█
 ```
 
-Once the word has been correctly typed, a result message will be displayed and a new word will be randomly selected for the next round:
+If there is any mistype within the expected word, the game will provide the opportunity to retry:
+```
+---
+USART example
+
+Type: kiwi
+....
+Try again!
+█
+```
+
+Once the whole word has been correctly typed, a result message will be displayed. A new round starts automatically with the next word to be typed:
 ```
 ---
 USART example
@@ -64,14 +63,4 @@ Type: papaya
 █
 ```
 
-If the typed word do not match the selected word, an error message will be displayed and the program will await for the user to try again the previously select word: 
-
-```
----
-USART example
-
-Type: kiwi
-....
-Try again!
-█
-```
+The game runs on an infinite superloop and only ends when the board has been powered off.

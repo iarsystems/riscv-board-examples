@@ -37,7 +37,7 @@ It is highly recommended you follow these guidelines.
 1. Clone or download this repository to your local machine.
 2. Open the CMake project (the top-level CMakeList.txt) in your preferred IDE.
 3. Build the CMake project. All application examples will build.
-4. Connect the board's MIPI-20  to a supported debug probe (IAR I-jet or SEGGER J-link) attached to an USB port of your local machine.
+4. Connect the board's MIPI-20 to a supported debug probe (IAR I-jet or SEGGER J-link) attached to an USB port of your local machine.
 5. Debug any desired application example.
 
 >[!TIP]
