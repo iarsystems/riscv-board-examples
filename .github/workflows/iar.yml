@@ -1,4 +1,4 @@
-name: IAR CI
+name: CXRISCV CI
 
 on:
   workflow_dispatch:
