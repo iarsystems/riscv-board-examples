@@ -1,4 +1,5 @@
 # Add subdirectories
+
 add_subdirectory(accelerometer)
 add_subdirectory(coremark)
 add_subdirectory(leds)

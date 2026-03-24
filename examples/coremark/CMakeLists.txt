@@ -41,9 +41,8 @@ target_include_directories(${EXAMPLE} PRIVATE
 
 target_compile_options(${EXAMPLE} PRIVATE
   --core=RV32IMAC
-  -e
+  --dlib_config=full
   --no_wrap_diagnostics
-  --nonportable_path_warnings
 )
 
 target_link_options(${EXAMPLE} PRIVATE
@@ -52,5 +51,5 @@ target_link_options(${EXAMPLE} PRIVATE
   "SHELL:--config_def HEAP_SIZE=0x1000"
   --redirect __write=__write_buffered
   --debug_lib=iar_breakpoint
-  --map .
+  --map $<TARGET_FILE_DIR:${EXAMPLE}>
 )

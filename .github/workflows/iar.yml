@@ -27,7 +27,7 @@ jobs:
     - name: Invoke the IAR C/C++ Compiler for RISC-V
       run: iccriscv --version
     - name: Checkout project
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: CMake - Configure CXRISCV preset
       run: cmake --preset cxriscv
     - name: CMake - Build Debug preset

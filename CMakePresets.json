@@ -2,97 +2,110 @@
     "version": 10,
     "configurePresets": [
         {
-            "name": "common",
+            "name": "common-base",
             "hidden": true,
+            "binaryDir": "${sourceDir}/build",
             "cacheVariables": {
-                "CMAKE_EXPORT_COMPILE_COMMANDS":true
+                "CMAKE_SYSTEM_NAME": {
+                    "type": "STRING",
+                    "value": "Generic"
+                },
+                "CMAKE_STATIC_LIBRARY_PREFIX": {
+                    "type": "STRING",
+                    "value": ""
+                },
+                "CMAKE_C_FLAGS_MEDIUM": {
+                    "type": "STRING",
+                    "value": "-Om -DNDEBUG"
+                },
+                "CMAKE_CXX_FLAGS_MEDIUM": {
+                    "type": "STRING",
+                    "value": "-Om -DNDEBUG"
+                },
+                "CMAKE_C_FLAGS_HIGHSPEED": {
+                    "type": "STRING",
+                    "value": "-Ohs -DNDEBUG"
+                },
+                "CMAKE_CXX_FLAGS_HIGHSPEED": {
+                    "type": "STRING",
+                    "value": "-Ohs -DNDEBUG"
+                },
+                "CMAKE_C_FLAGS_MAXSPEED": {
+                    "type": "STRING",
+                    "value": "-Ohs --no_size_constraints -DNDEBUG"
+                },
+                "CMAKE_CXX_FLAGS_MAXSPEED": {
+                    "type": "STRING",
+                    "value": "-Ohs --no_size_constraints -DNDEBUG"
+                },
+                "IAR_RT_LLIO_ARM": {
+                    "type": "STRING",
+                    "value": "--semihosting"
+                },
+                "IAR_RT_LLIO_RISCV": {
+                    "type": "STRING",
+                    "value": "--semihosting"
+                },
+                "IAR_RT_LLIO_RH850": {
+                    "type": "STRING",
+                    "value": "--debug_lib"
+                },
+                "IAR_RT_LLIO_RL78": {
+                    "type": "STRING",
+                    "value": "--debug_lib"
+                },
+                "IAR_RT_LLIO_RX": {
+                    "type": "STRING",
+                    "value": "--debug_lib"
+                }
             },
-            "generator": "Ninja Multi-Config",
-            "binaryDir": "${sourceDir}/build"
-        },
-        {
-            "name": "cxriscv",
-            "displayName": "CXRISCV",
-            "description": "Configure project for CXRISCV",
-            "inherits": "common",
-            "condition": {
-                "type": "equals",
-                "lhs": "${hostSystemName}",
-                "rhs": "Linux"
-            },
-            "environment": {
-                "CC":  "/opt/iar/cxriscv/riscv/bin/iccriscv",
-                "CXX": "/opt/iar/cxriscv/riscv/bin/iccriscv",
-                "ASM": "/opt/iar/cxriscv/riscv/bin/iasmriscv"
-            },
-            "cacheVariables": {
-                "SELECTED_TOOL": "cxriscv",
-                "TOOLKIT_DIR": "/opt/iar/cxriscv/riscv"
+            "warnings": {
+                "unusedCli": false
             }
         },
         {
-            "name": "bxriscv",
-            "displayName": "BXRISCV",
-            "description": "Configure project for BXRISCV",
-            "inherits": "common",
-            "condition": {
-                "type": "equals",
-                "lhs": "${hostSystemName}",
-                "rhs": "Linux"
-            },
-            "environment": {
-                "CC":  "/opt/iarsystems/bxriscv/riscv/bin/iccriscv",
-                "CXX": "/opt/iarsystems/bxriscv/riscv/bin/iccriscv",
-                "ASM": "/opt/iarsystems/bxriscv/riscv/bin/iasmriscv"
-            },
+            "name": "ninja-multi",
+            "inherits": "common-base",
+            "displayName": "Ninja Multi-Config",
+            "description": "Configure a CMake project using the Ninja Multi-Config Generator.",
+            "generator": "Ninja Multi-Config",
             "cacheVariables": {
-                "SELECTED_TOOL": "bxriscv",
-                "TOOLKIT_DIR": "/opt/iarsystems/bxriscv/riscv"
+                "CMAKE_CONFIGURATION_TYPES": {
+                    "type": "STRING",
+                    "value": "Debug;Release;RelWithDebInfo;MinSizeRel;Medium;HighSpeed;MaxSpeed"
+                },
+                "CMAKE_PRESET_NAME": {
+                    "type": "STRING",
+                    "value": "ninja-multi"
+                }
+            }
+        },
+        {
+            "name": "ninja",
+            "inherits": "common-base",
+            "displayName": "Ninja",
+            "description": "Configure a CMake project using the Ninja Generator.",
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": {
+                    "type": "STRING",
+                    "value": "Debug"
+                },
+                "CMAKE_PRESET_NAME": {
+                    "type": "STRING",
+                    "value": "ninja-multi"
+                }
             }
         }
     ],
     "buildPresets": [
         {
-            "name": "debug",
-            "displayName": "Debug",
-            "description": "Disable optimizations - include debug information.",
-            "configurePreset": "cxriscv",
-            "configuration": "Debug"
+            "name": "ninja-multi",
+            "configurePreset": "ninja-multi"
         },
         {
-            "name": "release",
-            "displayName": "Release",
-            "description": "Optimize for speed - exclude debug information.",
-            "configurePreset": "cxriscv",
-            "configuration": "Release"
-        },
-        {
-            "name": "relwithdebinfo",
-            "displayName": "RelWithDebInfo",
-            "description": "Optimize for speed - include debug information.",
-            "configurePreset": "cxriscv",
-            "configuration": "RelWithDebInfo"
-        },
-        {
-            "name": "minsizerel",
-            "displayName": "MinSizeRel",
-            "description": "Optimize for smallest binary size - exclude debug information.",
-            "configurePreset": "cxriscv",
-            "configuration": "MinSizeRel"
-        },
-        {
-            "name": "highspeed",
-            "displayName": "HighSpeed",
-            "description": "Optimize for high execution speed - exclude debug information.",
-            "configurePreset": "cxriscv",
-            "configuration": "HighSpeed"
-        },
-        {
-            "name": "maxspeed",
-            "displayName": "MaxSpeed",
-            "description": "Optimize for maximum execution speed - exclude debug information.",
-            "configurePreset": "cxriscv",
-            "configuration": "MaxSpeed"
+            "name": "ninja",
+            "configurePreset": "ninja"
         }
     ]
 }
