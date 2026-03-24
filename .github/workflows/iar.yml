@@ -19,7 +19,7 @@ env:
 
 jobs:
   build-ninja-multi:
-    name: Build
+    name: Build Ninja Multi-Config
     runs-on: ubuntu-24.04
     container:
       image: ghcr.io/iarsystems/riscv
@@ -46,7 +46,7 @@ jobs:
       run: cmake --build --preset maxspeed-ninja-multi --verbose
 
   build-ninja:
-    name: Build
+    name: Build Ninja
     runs-on: ubuntu-24.04
     container:
       image: ghcr.io/iarsystems/riscv
