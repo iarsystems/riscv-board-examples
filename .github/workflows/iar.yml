@@ -18,7 +18,7 @@ env:
   IAR_LMS_BEARER_TOKEN: ${{ secrets.IAR_LMS_BEARER_TOKEN }}
 
 jobs:
-  build:
+  build-ninja-multi:
     name: Build
     runs-on: ubuntu-24.04
     container:
@@ -28,18 +28,46 @@ jobs:
       run: iccriscv --version
     - name: Checkout project
       uses: actions/checkout@v6
-    - name: CMake - Configure CXRISCV preset
-      run: cmake --preset cxriscv
+    - name: CMake - Configure Ninja Multi-Config preset
+      run: cmake --preset ninja-multi
     - name: CMake - Build Debug preset
-      run: cmake --build --preset debug --verbose
+      run: cmake --build --preset debug-ninja-multi --verbose
     - name: CMake - Build Release preset
-      run: cmake --build --preset release --verbose
+      run: cmake --build --preset release-ninja-multi --verbose
     - name: CMake - Build Release With Debug Info preset
-      run: cmake --build --preset relwithdebinfo --verbose
+      run: cmake --build --preset relwithdebinfo-ninja-multi --verbose
     - name: CMake - Build Minimum Size Release preset
-      run: cmake --build --preset minsizerel --verbose
+      run: cmake --build --preset minsizerel-ninja-multi --verbose
+    - name: CMake - Build Medium Speed preset
+      run: cmake --build --preset medium-ninja-multi --verbose
     - name: CMake - Build High Speed preset
-      run: cmake --build --preset highspeed --verbose
+      run: cmake --build --preset highspeed-ninja-multi --verbose
     - name: CMake - Build Maximum Speed preset
-      run: cmake --build --preset maxspeed --verbose
+      run: cmake --build --preset maxspeed-ninja-multi --verbose
 
+  build-ninja:
+    name: Build
+    runs-on: ubuntu-24.04
+    container:
+      image: ghcr.io/iarsystems/riscv
+    steps:
+    - name: Invoke the IAR C/C++ Compiler for RISC-V
+      run: iccriscv --version
+    - name: Checkout project
+      uses: actions/checkout@v6
+    - name: CMake - Configure Ninja preset
+      run: cmake --preset ninja
+    - name: CMake - Build Debug preset
+      run: cmake --build --preset debug-ninja --verbose
+    - name: CMake - Build Release preset
+      run: cmake --build --preset release-ninja- --verbose
+    - name: CMake - Build Release With Debug Info preset
+      run: cmake --build --preset relwithdebinfo-ninja --verbose
+    - name: CMake - Build Minimum Size Release preset
+      run: cmake --build --preset minsizerel-ninja --verbose
+    - name: CMake - Build Medium Speed preset
+      run: cmake --build --preset medium-ninja --verbose
+    - name: CMake - Build High Speed preset
+      run: cmake --build --preset highspeed-ninja --verbose
+    - name: CMake - Build Maximum Speed preset
+      run: cmake --build --preset maxspeed-ninja --verbose

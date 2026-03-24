@@ -136,7 +136,6 @@
         },
         {
             "name": "highspeed-ninja-multi",
-            "displayName": "HighSpeed",
             "description": "Optimize for high execution speed - exclude debug information.",
             "configurePreset": "ninja-multi",
             "configuration": "HighSpeed"
