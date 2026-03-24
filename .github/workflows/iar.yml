@@ -58,16 +58,16 @@ jobs:
     - name: CMake - Configure Ninja preset
       run: cmake --preset ninja
     - name: CMake - Build Debug preset
-      run: cmake --build --preset debug-ninja --verbose
+      run: cmake --build --preset debug-ninja --clean-first --verbose
     - name: CMake - Build Release preset
-      run: cmake --build --preset release-ninja --verbose
+      run: cmake --build --preset release-ninja --clean-first --verbose
     - name: CMake - Build Release With Debug Info preset
-      run: cmake --build --preset relwithdebinfo-ninja --verbose
+      run: cmake --build --preset relwithdebinfo-ninja --clean-first --verbose
     - name: CMake - Build Minimum Size Release preset
-      run: cmake --build --preset minsizerel-ninja --verbose
+      run: cmake --build --preset minsizerel-ninja --clean-first --verbose
     - name: CMake - Build Medium Speed preset
-      run: cmake --build --preset medium-ninja --verbose
+      run: cmake --build --preset medium-ninja --clean-first --verbose
     - name: CMake - Build High Speed preset
-      run: cmake --build --preset highspeed-ninja --verbose
+      run: cmake --build --preset highspeed-ninja --clean-first --verbose
     - name: CMake - Build Maximum Speed preset
-      run: cmake --build --preset maxspeed-ninja --verbose
+      run: cmake --build --preset maxspeed-ninja --clean-first --verbose
