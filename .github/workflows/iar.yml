@@ -60,7 +60,7 @@ jobs:
     - name: CMake - Build Debug preset
       run: cmake --build --preset debug-ninja --verbose
     - name: CMake - Build Release preset
-      run: cmake --build --preset release-ninja- --verbose
+      run: cmake --build --preset release-ninja --verbose
     - name: CMake - Build Release With Debug Info preset
       run: cmake --build --preset relwithdebinfo-ninja --verbose
     - name: CMake - Build Minimum Size Release preset
