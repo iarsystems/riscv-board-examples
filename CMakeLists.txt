@@ -18,6 +18,7 @@ endif()
 
 # Enable IAR Compiler extensions (-e)
 set(CMAKE_C_EXTENSIONS ON)
+set(CMAKE_CXX_EXTENSIONS ON)
 
 # Set the TOOLKIT directory
 cmake_path(GET CMAKE_C_COMPILER PARENT_PATH BIN_DIR)

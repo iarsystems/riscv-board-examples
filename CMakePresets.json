@@ -100,12 +100,102 @@
     ],
     "buildPresets": [
         {
-            "name": "ninja-multi",
-            "configurePreset": "ninja-multi"
+            "name": "debug-ninja-multi",
+            "displayName": "Debug",
+            "description": "Disable optimizations - include debug information.",
+            "configurePreset": "ninja-multi",
+            "configuration": "Debug"
         },
         {
-            "name": "ninja",
-            "configurePreset": "ninja"
+            "name": "release-ninja-multi",
+            "displayName": "Release",
+            "description": "Optimize for speed - exclude debug information.",
+            "configurePreset": "ninja-multi",
+            "configuration": "Release"
+        },
+        {
+            "name": "relwithdebinfo-ninja-multi",
+            "displayName": "RelWithDebInfo",
+            "description": "Optimize for speed - include debug information.",
+            "configurePreset": "ninja-multi",
+            "configuration": "RelWithDebInfo"
+        },
+        {
+            "name": "minsizerel-ninja-multi",
+            "displayName": "MinSizeRel",
+            "description": "Optimize for smallest binary size - exclude debug information.",
+            "configurePreset": "ninja-multi",
+            "configuration": "MinSizeRel"
+        },
+        {
+            "name": "medium-ninja-multi",
+            "displayName": "Medium",
+            "description": "Optimize for medium execution speed - exclude debug information.",
+            "configurePreset": "ninja-multi",
+            "configuration": "Medium"
+        },
+        {
+            "name": "highspeed-ninja-multi",
+            "displayName": "HighSpeed",
+            "description": "Optimize for high execution speed - exclude debug information.",
+            "configurePreset": "ninja-multi",
+            "configuration": "HighSpeed"
+        },
+        {
+            "name": "maxspeed-ninja-multi",
+            "displayName": "MaxSpeed",
+            "description": "Optimize for maximum execution speed - exclude debug information.",
+            "configurePreset": "ninja-multi",
+            "configuration": "MaxSpeed"
+        },
+        {
+            "name": "debug-ninja",
+            "displayName": "Debug",
+            "description": "Disable optimizations - include debug information.",
+            "configurePreset": "ninja",
+            "configuration": "Debug"
+        },
+        {
+            "name": "release-ninja",
+            "displayName": "Release",
+            "description": "Optimize for speed - exclude debug information.",
+            "configurePreset": "ninja",
+            "configuration": "Release"
+        },
+        {
+            "name": "relwithdebinfo-ninja",
+            "displayName": "RelWithDebInfo",
+            "description": "Optimize for speed - include debug information.",
+            "configurePreset": "ninja",
+            "configuration": "RelWithDebInfo"
+        },
+        {
+            "name": "minsizerel-ninja",
+            "displayName": "MinSizeRel",
+            "description": "Optimize for smallest binary size - exclude debug information.",
+            "configurePreset": "ninja",
+            "configuration": "MinSizeRel"
+        },
+        {
+            "name": "medium-ninja",
+            "displayName": "Medium",
+            "description": "Optimize for medium execution speed - exclude debug information.",
+            "configurePreset": "ninja",
+            "configuration": "Medium"
+        },
+        {
+            "name": "highspeed-ninja",
+            "displayName": "HighSpeed",
+            "description": "Optimize for high execution speed - exclude debug information.",
+            "configurePreset": "ninja",
+            "configuration": "HighSpeed"
+        },
+        {
+            "name": "maxspeed-ninja",
+            "displayName": "MaxSpeed",
+            "description": "Optimize for maximum execution speed - exclude debug information.",
+            "configurePreset": "ninja",
+            "configuration": "MaxSpeed"
         }
     ]
 }

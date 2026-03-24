@@ -5,7 +5,7 @@ macro(iar_cspysim TARGET)
   find_program(CSPYBAT
     NAMES CSpyBat
     HINTS "${TOOLKIT_DIR}/.."
-    PATH_SUFFIXES common/bin
+    PATH_SUFFIXES "common/bin"
     REQUIRED
   )
 
@@ -14,7 +14,7 @@ macro(iar_cspysim TARGET)
   find_library(LIBPROC
     NAMES libriscvproc.so
     HINTS ${TOOLKIT_DIR}
-    PATH_SUFFIXES riscv/bin
+    PATH_SUFFIXES bin
     REQUIRED
   )
   find_library(LIBSIM
@@ -30,8 +30,7 @@ macro(iar_cspysim TARGET)
     REQUIRED
   )
 
-  add_test(
-    NAME ${TARGET}
+  add_test(NAME ${TARGET}
     COMMAND ${CSPYBAT} ${LIBPROC} ${LIBSIM}
       --plugin=${LIBSUPPORT}
       --debug_file=$<TARGET_FILE:${TARGET}>
