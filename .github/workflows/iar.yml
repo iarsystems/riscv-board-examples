@@ -3,7 +3,7 @@ name: CXRISCV CI
 on:
   workflow_dispatch:
   schedule:
-  - cron: '30 * * * *'
+  - cron: '33 1 * * *'
   push:
     paths-ignore:
     - 'README.md'
